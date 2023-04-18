@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useState } from "react";
+import PropTypes from 'prop-types';
 
 export const AddCategory = ({onSetCategory}) => {
 
@@ -16,8 +17,9 @@ export const AddCategory = ({onSetCategory}) => {
         setInputValue("");
     }
 
+    //aria-label necesario para que se pueda buscar el formulario en los test (by role)
     return (
-        <form onSubmit={ onSubmit }>
+        <form onSubmit={ onSubmit } aria-label="form">
             <input 
                 type="text"
                 placeholder="Buscar Gifs"
@@ -26,4 +28,8 @@ export const AddCategory = ({onSetCategory}) => {
             />
         </form>
     )
+}
+
+AddCategory.prototypes = {
+    onSetCategory : PropTypes.func.isRequired
 }
